@@ -29,28 +29,43 @@
       transition: 0.3s ease;
       position: absolute;
     }
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <h1>Butona Tıklayabilir misin? 😏</h1>
-  <button id="button">Tıkla Beni!</button>
+  <button id="button">Beni yakalayabilirsen sana Kutay hakkında önemli bilgiler vereceğim!</button>
+  <div id="message"></div>
 
   <script>
     const button = document.getElementById('button');
+    const message = document.getElementById('message');
     let escapeCount = 0;
 
     button.addEventListener('mouseover', () => {
       escapeCount++;
-      if (escapeCount % 3 !== 0) { // Her 3. denemede kaçmaz
-        const x = Math.random() * (window.innerWidth - button.offsetWidth);
-        const y = Math.random() * (window.innerHeight - button.offsetHeight);
+      if (escapeCount < 3) { // İlk 2 denemede kaç
+        const x = Math.random() * (window.innerWidth - button.offsetWidth - 20);
+        const y = Math.random() * (window.innerHeight - button.offsetHeight - 20);
         button.style.left = `${x}px`;
         button.style.top = `${y}px`;
+      } else {
+        button.style.cursor = 'pointer'; // Artık sabit kalsın
       }
     });
 
     button.addEventListener('click', () => {
-      alert('Yakalandım! Tıpkı kalbimi yakaladığın gibi ❤️');
+      // Mesajı göster
+      message.style.display = 'block';
+      message.textContent = 'Kutay hakkında önemli bilgiler: O çok gizemli! 🤫';
+
+      // Butonun rengini değiştir
       button.textContent = 'Beni Yakaladın!';
       button.style.backgroundColor = '#6bff6b';
     });
