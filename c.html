@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selam Çağla</title>
+  <title>Çağla</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
@@ -72,9 +72,9 @@
   </style>
 </head>
 <body>
-  <h1 id="header">Butona Tıklayabilir misin? 😏</h1>
+  <h1 style="margin-bottom: 500px;" id="header">Butona Yakalayabilir misin? 😏</h1>
   <button id="button">Beni Yakala</button>
-  <div id="finalMessage">Yakaladın! Tıpkı kalbimi yakaladığın gibi 😭😊</div>
+  <div id="finalMessage">Yakaladın! Tıpkı kalbimi yakaladığın gibi 😂😊</div>
 
   <!-- Kalp animasyonları FontAwesome (başlangıçta gizli) -->
   <i class="fa-solid fa-heart heart heart1"></i>
@@ -97,11 +97,35 @@
 
     button.addEventListener('mouseover', () => {
       escapeCount++;
-      if (escapeCount < 15) { // İlk 15 denemede kaç
+      if (escapeCount < 30) { // 30 deneme hakkı
         const x = Math.random() * (window.innerWidth - button.offsetWidth - 20);
         const y = Math.random() * (window.innerHeight - button.offsetHeight - 20);
         button.style.left = `${x}px`;
         button.style.top = `${y}px`;
+
+        // Başlık her 5 seferde bir değişsin
+        if (escapeCount % 5 === 0) {
+          switch (escapeCount) {
+            case 5:
+              header.textContent = "Biraz daha zorlaştırdım! 😏";
+              break;
+            case 10:
+              header.textContent = "Yakalayabileceğin mi? 🤔";
+              break;
+            case 15:
+              header.textContent = "İşte gerçek mücadele! 💪";
+              break;
+            case 20:
+              header.textContent = "Beni yakalamak zor olacak! 😱";
+              break;
+            case 25:
+              header.textContent = "Son 5 deneme! ⚡";
+              break;
+            case 30:
+              header.textContent = "Ve... Beni yakaladın! 🎉";
+              break;
+          }
+        }
       } else {
         button.style.cursor = 'pointer'; // Artık sabit kalsın
       }
