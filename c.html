@@ -39,7 +39,7 @@
     }
     #finalMessage {
       display: none;
-      font-size: 24px;
+      font-size: 30px; /* Daha büyük yazı boyutu */
       font-weight: bold;
       color: #ff6b6b;
       position: absolute;
@@ -53,11 +53,14 @@
       50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
       100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
+    #header {
+      font-size: 48px; /* Başlık için daha büyük yazı boyutu */
+    }
   </style>
 </head>
 <body>
-  <h1>Butona Tıklayabilir misin? 😏</h1>
-  <button id="button">Beni yakalayabilirsen önemli bilgiler vereceğim!</button>
+  <h1 id="header">Butona Tıklayabilir misin? 😏</h1>
+  <button id="button">Beni yakalayabilirsen sana Kutay hakkında önemli bilgiler vereceğim!</button>
   <div id="message"></div>
   <div id="finalMessage">Yakalandım! Tıpkı kalbimi yakaladığın gibi ❤️</div>
 
@@ -65,11 +68,12 @@
     const button = document.getElementById('button');
     const message = document.getElementById('message');
     const finalMessage = document.getElementById('finalMessage');
+    const header = document.getElementById('header');
     let escapeCount = 0;
 
     button.addEventListener('mouseover', () => {
       escapeCount++;
-      if (escapeCount < 15) { // İlk 2 denemede kaç
+      if (escapeCount < 3) { // İlk 2 denemede kaç
         const x = Math.random() * (window.innerWidth - button.offsetWidth - 20);
         const y = Math.random() * (window.innerHeight - button.offsetHeight - 20);
         button.style.left = `${x}px`;
@@ -80,7 +84,8 @@
     });
 
     button.addEventListener('click', () => {
-      // Butonu ve mesajı sil
+      // Başlık ve butonu sil
+      header.style.display = 'none';
       button.style.display = 'none';
       message.style.display = 'none';
 
