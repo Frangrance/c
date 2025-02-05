@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selam Çağla</title>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -48,14 +47,10 @@
       50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
       100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-    @keyframes bubble {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -60%) scale(1.2); }
-      100% { transform: translate(-50%, -50%) scale(1); }
-    }
-    #header {
-      font-size: 48px;
-      margin-bottom: 500px;
+    @keyframes heartAnimation {
+      0% { opacity: 1; transform: translateY(0); }
+      50% { opacity: 0.5; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     .heart {
       position: absolute;
@@ -64,21 +59,6 @@
       animation: heartAnimation 2s infinite;
       display: none; /* Başlangıçta gizli */
     }
-    @keyframes heartAnimation {
-      0% { opacity: 1; transform: translateY(0); }
-      50% { opacity: 0.5; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .heart1 { left: 10%; animation-delay: 0.5s; }
-    .heart2 { left: 30%; animation-delay: 1s; }
-    .heart3 { left: 50%; animation-delay: 1.5s; }
-    .heart4 { left: 70%; animation-delay: 2s; }
-    .heart5 { left: 90%; animation-delay: 2.5s; }
-    .heart6 { top: 10%; left: 20%; animation-delay: 1s; }
-    .heart7 { top: 20%; left: 60%; animation-delay: 1.5s; }
-    .heart8 { top: 30%; left: 40%; animation-delay: 2s; }
-    .heart9 { top: 50%; left: 10%; animation-delay: 2.5s; }
-    .heart10 { top: 60%; left: 80%; animation-delay: 3s; }
     
     /* Mobil cihazlar için düzenleme */
     @media (max-width: 768px) {
@@ -97,8 +77,17 @@
   <div id="finalMessage">Yakaladın! Tıpkı kalbimi yakaladığın gibi ❤️😭😊</div>
 
   <!-- Kalp animasyonları FontAwesome (başlangıçta gizli) -->
-<i class="fa-solid fa-heart  heart1"></i><i class="fa-solid fa-heart  heart2"></i><i class="fa-solid fa-heart  heart3"></i><i class="fa-solid fa-heart  heart4"></i><i class="fa-solid fa-heart  heart5"></i><i class="fa-solid fa-heart  heart6"></i>
-<i class="fa-solid fa-heart  heart7"></i><i class="fa-solid fa-heart  heart8"></i><i class="fa-solid fa-heart  heart9"></i><i class="fa-solid fa-heart  heart10"></i>
+  <i class="fa-solid fa-heart heart heart1"></i>
+  <i class="fa-solid fa-heart heart heart2"></i>
+  <i class="fa-solid fa-heart heart heart3"></i>
+  <i class="fa-solid fa-heart heart heart4"></i>
+  <i class="fa-solid fa-heart heart heart5"></i>
+  <i class="fa-solid fa-heart heart heart6"></i>
+  <i class="fa-solid fa-heart heart heart7"></i>
+  <i class="fa-solid fa-heart heart heart8"></i>
+  <i class="fa-solid fa-heart heart heart9"></i>
+  <i class="fa-solid fa-heart heart heart10"></i>
+
   <script>
     const button = document.getElementById('button');
     const finalMessage = document.getElementById('finalMessage');
@@ -126,12 +115,35 @@
       // Final mesajı göster
       finalMessage.style.display = 'block';
 
-      // Kalpleri göster
+      // Kalpleri yerleştir
+      placeHearts();
       hearts.forEach(heart => {
         heart.style.display = 'block';
       });
     });
+
+    // Kalpleri ekranın köşelerine yerleştir
+    function placeHearts() {
+      const positions = [
+        { top: '5%', left: '5%' },
+        { top: '5%', left: '90%' },
+        { top: '90%', left: '5%' },
+        { top: '90%', left: '90%' },
+        { top: '50%', left: '0%' },
+        { top: '50%', left: '100%' },
+        { top: '20%', left: '50%' },
+        { top: '70%', left: '20%' },
+        { top: '70%', left: '80%' },
+        { top: '20%', left: '80%' },
+      ];
+
+      hearts.forEach((heart, index) => {
+        if (positions[index]) {
+          heart.style.top = positions[index].top;
+          heart.style.left = positions[index].left;
+        }
+      });
+    }
   </script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
