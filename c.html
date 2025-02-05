@@ -61,7 +61,7 @@
 </head>
 <body>
   <h1 id="header">Butona Tıklayabilir misin? 😏</h1>
-  <button id="button">Beni yakalayabilirsen sana Kutay hakkında önemli bilgiler vereceğim!</button>
+  <button id="button">Beni yakala</button>
   <div id="message"></div>
   <div id="finalMessage">Yakalandım! Tıpkı kalbimi yakaladığın gibi ❤️</div>
 
@@ -74,7 +74,7 @@
 
     button.addEventListener('mouseover', () => {
       escapeCount++;
-      if (escapeCount < 3) { // İlk 2 denemede kaç
+      if (escapeCount < 15) { // İlk 2 denemede kaç
         const x = Math.random() * (window.innerWidth - button.offsetWidth - 20);
         const y = Math.random() * (window.innerHeight - button.offsetHeight - 20);
         button.style.left = `${x}px`;
