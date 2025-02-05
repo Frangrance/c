@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaçan Buton</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #button {
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff6b6b;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <h1>Butona Tıklayabilir misin? 😏</h1>
+  <button id="button">Tıkla Beni!</button>
+
+  <script>
+    const button = document.getElementById('button');
+
+    button.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - button.offsetWidth);
+      const y = Math.random() * (window.innerHeight - button.offsetHeight);
+      button.style.left = `${x}px`;
+      button.style.top = `${y}px`;
+    });
+
+    button.addEventListener('click', () => {
+      alert('Yakalandım! Tıpkı kalbimi yakaladığın gibi ❤️');
+      button.textContent = 'Beni Yakaladın!';
+      button.style.backgroundColor = '#6bff6b';
+    });
+  </script>
+</body>
+</html>
