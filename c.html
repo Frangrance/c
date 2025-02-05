@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kaçan Buton</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome -->
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -61,6 +61,7 @@
       font-size: 50px;
       color: red;
       animation: heartAnimation 2s infinite;
+      display: none; /* Başlangıçta gizli */
     }
     @keyframes heartAnimation {
       0% { opacity: 1; transform: translateY(0); }
@@ -84,7 +85,7 @@
   <button id="button">Beni yakala</button>
   <div id="finalMessage">Yakaladın! Tıpkı kalbimi yakaladığın gibi ❤️😭😊</div>
 
-  <!-- Kalp animasyonları FontAwesome -->
+  <!-- Kalp animasyonları FontAwesome (başlangıçta gizli) -->
   <i class="fas fa-heart heart heart1"></i>
   <i class="fas fa-heart heart heart2"></i>
   <i class="fas fa-heart heart heart3"></i>
@@ -100,6 +101,7 @@
     const button = document.getElementById('button');
     const finalMessage = document.getElementById('finalMessage');
     const header = document.getElementById('header');
+    const hearts = document.querySelectorAll('.heart');
     let escapeCount = 0;
 
     button.addEventListener('mouseover', () => {
@@ -121,8 +123,12 @@
 
       // Final mesajı göster
       finalMessage.style.display = 'block';
+
+      // Kalpleri göster
+      hearts.forEach(heart => {
+        heart.style.display = 'block';
+      });
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
